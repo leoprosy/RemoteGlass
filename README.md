@@ -1,3 +1,4 @@
+![Header](header.jpg)
 # Remoteglass
 Simple remote app for Orange France TV decoders, built (vibecoded) in Swift.
 
