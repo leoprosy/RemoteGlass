@@ -9,6 +9,7 @@ Simple remote app for Orange France TV decoders, built (vibecoded) in Swift.
 - Works will all Orange decoders (Currently tested with Livebox 5's UHD Decoder)
 - Customizable background with gradient or photo
 - Haptic feedbacks
+- ADS FREE
 
 ## Known issues
 Buttons and some other UI elements turn white after leaving the app
