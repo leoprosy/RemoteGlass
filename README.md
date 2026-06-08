@@ -11,5 +11,10 @@ Simple remote app for Orange France TV decoders, built (vibecoded) in Swift.
 - Haptic feedbacks
 - ADS FREE
 
+## Usage
+- Click "Connect"
+- Choose your Decoder ip
+- That's all
+
 ## Known issues
 Buttons and some other UI elements turn white after leaving the app
