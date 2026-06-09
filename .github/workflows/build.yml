@@ -17,10 +17,9 @@ jobs:
 
       - name: Build unsigned Xcode project
         run: |
-          # Remplacez "Remoteglass" par les noms exacts si différents
           xcodebuild clean build \
-            -project Remoteglass.xcodeproj \
-            -scheme Remoteglass \
+            -project OrangeRemote.xcodeproj \
+            -scheme OrangeRemote \
             -configuration Release \
             -sdk iphoneos \
             -arch arm64 \
@@ -32,11 +31,11 @@ jobs:
       - name: Package into IPA
         run: |
           mkdir -p Payload
-          mv build/Remoteglass.app Payload/
-          zip -r Remoteglass.ipa Payload
+          mv build/OrangeRemote.app Payload/
+          zip -r OrangeRemote.ipa Payload
 
       - name: Upload IPA Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Remoteglass-IPA
-          path: Remoteglass.ipa
+          name: OrangeRemote-IPA
+          path: OrangeRemote.ipa
