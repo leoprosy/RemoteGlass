@@ -1,0 +1,42 @@
+name: Build iOS App
+
+on:
+  workflow_dispatch: # Permet de lancer la compilation manuellement
+
+jobs:
+  build:
+    name: Build and Package IPA
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+
+      - name: Build unsigned Xcode project
+        run: |
+          # Remplacez "Remoteglass" par les noms exacts si différents
+          xcodebuild clean build \
+            -project Remoteglass.xcodeproj \
+            -scheme Remoteglass \
+            -configuration Release \
+            -sdk iphoneos \
+            -arch arm64 \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            CONFIGURATION_BUILD_DIR=$(pwd)/build
+
+      - name: Package into IPA
+        run: |
+          mkdir -p Payload
+          mv build/Remoteglass.app Payload/
+          zip -r Remoteglass.ipa Payload
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Remoteglass-IPA
+          path: Remoteglass.ipa
